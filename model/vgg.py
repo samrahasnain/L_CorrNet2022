@@ -53,7 +53,7 @@ class VGG(nn.Module):
         conv5.add_module('conv5_3', DSConv3x3(512, 512, stride=1))
         self.conv5 = conv5
 
-        pre_train = torch.load('/home/lgy/20210206_ORSI_SOD/model/vgg16-397923af.pth')
+        pre_train = torch.load('/home/lgy/20210206_ORSI_SOD/model/vgg16-397923af.pth', weights_only=True)
         self._initialize_weights(pre_train)
 
     def forward(self, x):
