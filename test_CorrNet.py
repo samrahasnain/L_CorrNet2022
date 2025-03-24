@@ -42,11 +42,11 @@ for dataset in test_datasets:
         gt /= (gt.max() + 1e-8)
         image = image.cuda()
         if torch.cuda.is_available():
-		torch.cuda.synchronize()
+            torch.cuda.synchronize()
         time_start = time.time()
         res, s2, s3, pre_pred, s1_sig, s2_sig, s3_sig, pre_pred_sig = model(image)
         if torch.cuda.is_available():
-		torch.cuda.synchronize()
+            torch.cuda.synchronize()
         time_end = time.time()
         time_sum = time_sum+(time_end-time_start)
         print(time_end-time_start)
