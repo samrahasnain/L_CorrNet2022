@@ -14,7 +14,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=256, help='testing size')
 opt = parser.parse_args()
 
-dataset_path = '/kaggle/input/duts-saliency-detection-dataset/DUTS-TE/DUTS-TE-Image'
+dataset_path = '/kaggle/input/duts-saliency-detection-dataset/DUTS-TE/DUTS-TE-Image/'
 
 model = CorrelationModel_VGG()
 model.load_state_dict(torch.load('/kaggle/working/L_CorrNet2022/models/ORSSD_CorrNet.pth.44'))
