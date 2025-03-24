@@ -67,6 +67,8 @@ class VGG(nn.Module):
 
     def _initialize_weights(self, pre_train):
         keys = pre_train.keys()
+        print(type(pre_train))  # Should be an OrderedDict
+        print(pre_train.keys())  # Check available keys
 
         self.conv1.conv1_1.weight.data.copy_(pre_train[keys[0]])
         self.conv1.conv1_2.weight.data.copy_(pre_train[keys[2]])
