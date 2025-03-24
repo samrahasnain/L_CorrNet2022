@@ -64,8 +64,16 @@ class VGG(nn.Module):
         x = self.conv5(x)
 
         return x
-
     def _initialize_weights(self, pre_train):
+        model_dict = self.state_dict()  # Get your model's parameter names
+        pretrain_dict = {k: v for k, v in pre_train.items() if k in model_dict}
+
+        model_dict.update(pretrain_dict)
+        self.load_state_dict(model_dict, strict=False)  # Ignore missing layers
+
+        print(f"Loaded {len(pretrain_dict)} layers from pretrained model")
+
+    '''def _initialize_weights(self, pre_train):
         keys = pre_train.keys()
         print(type(pre_train))  # Should be an OrderedDict
         print(pre_train.keys())  # Check available keys
@@ -84,7 +92,7 @@ class VGG(nn.Module):
         self.conv2.conv2_2.bias.data.copy_(pre_train[keys[7]])
         self.conv3.conv3_1.bias.data.copy_(pre_train[keys[9]])
         self.conv3.conv3_2.bias.data.copy_(pre_train[keys[11]])
-        self.conv3.conv3_3.bias.data.copy_(pre_train[keys[13]])
+        self.conv3.conv3_3.bias.data.copy_(pre_train[keys[13]])'''
 
 class convbnrelu(nn.Module):
     def __init__(self, in_channel, out_channel, k=3, s=1, p=1, g=1, d=1, bias=False, bn=True, relu=True):
