@@ -17,7 +17,7 @@ opt = parser.parse_args()
 dataset_path = '/kaggle/input/duts-saliency-detection-dataset/DUTS-TE/DUTS-TE-Image'
 
 model = CorrelationModel_VGG()
-model.load_state_dict(torch.load('./models/CorrNet/ORSSD_CorrNet.pth.44'))
+model.load_state_dict(torch.load('/kaggle/working/L_CorrNet2022/models/CorrNet/ORSSD_CorrNet.pth.44'))
 
 model.cuda()
 model.eval()
